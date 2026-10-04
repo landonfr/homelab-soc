@@ -1,0 +1,19 @@
+
+[DEFAULT]
+# Never ban these addresses (localhost + YOUR home IP)
+ignoreip = 127.0.0.1/8 ::1 HOME_IP
+
+# Ban for 1 hour instead of 10 minutes
+bantime = 1h
+
+# 5 failures within 10 minutes = banned
+findtime = 10m
+maxretry = 5
+
+# Repeat offenders get longer bans each time (up to 1 week)
+bantime.increment = true
+bantime.maxtime = 1w
+
+[sshd]
+enabled = true
+backend = systemd

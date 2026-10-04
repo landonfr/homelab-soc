@@ -1,0 +1,25 @@
+loki.source.file "suricata" {
+	targets		=[{"__path__" = "/var/log/suricata/eve.json", "job" = "suricata"}]
+	tail_from_end   = true
+	forward_to	= [loki.process.suricata.receiver]
+}
+
+loki.process "suricata" {
+	stage.json {
+		expressions = { event_type = "" }
+		}
+		stage.drop {
+			source		= "event_type"
+			expression = "^(flow|mdns|stats)$"
+			}
+		stage.labels {
+			values = { event_type = "" }
+			}
+			forward_to = [loki.write.local.receiver]
+}
+
+loki.write "local" {
+		endpoint {
+			url = "http://127.0.0.1:3100/loki/api/v1/push"
+	}
+}

@@ -1,0 +1,7 @@
+[Unit]
+Description=Update Suricata rules
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/suricata-update
+ExecStartPost=/usr/bin/systemctl reload suricata
