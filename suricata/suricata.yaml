@@ -281,7 +281,7 @@ outputs:
             # DNS record types to log, based on the query type.
             # Default: all.
             #types: [a, aaaa, cname, mx, ns, ptr, txt]
-        - mdns:
+        #- mdns:
         - tls:
             extended: yes     # enable this for extended logging information
             # output TLS transaction where the session is resumed using a
@@ -363,14 +363,14 @@ outputs:
             # passwords: yes           # enable output of passwords. Disabled by default
                                        # If a password message is seen but this setting
                                        # is disabled, "password_redacted": true is logged
-        - stats:
-            totals: yes       # stats for all threads merged together
-            threads: no       # per thread stats
-            deltas: no        # include delta values
+        #- stats:
+        #    totals: yes       # stats for all threads merged together
+        #    threads: no       # per thread stats
+        #    deltas: no        # include delta values
             # Don't log stats counters that are zero. Default: true
             #null-values: false    # False will NOT log stats counters: 0
         # bi-directional flows
-        - flow
+        #- flow
         # uni-directional flows
         #- netflow
 
